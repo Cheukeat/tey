@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Besdong Cheukeat - Happy Heart Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Kantumruy+Pro:wght@400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Kantumruy Pro', sans-serif;
+      background: radial-gradient(circle at 50% 15%, #ffe4ec 0%, #ffd1df 40%, #ffb6ce 80%, #ffa5c5 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .font-brand {
+      font-family: 'Outfit', 'Kantumruy Pro', sans-serif;
+    }
+    .glass-happy {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.28),
+                  0 0 0 1px rgba(255, 228, 230, 0.8),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    }
+    .input-field-happy {
+      background: rgba(255, 245, 248, 0.9);
+      border: 1.5px solid #fed7e2;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .input-field-happy:focus {
+      border-color: #fb7185;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(251, 113, 133, 0.22);
+    }
+    .bouncy-mascot {
+      animation: happyBounce 2.4s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    @keyframes happyBounce {
+      0%, 100% { transform: translateY(0) scale(1, 1); }
+      30% { transform: translateY(-10px) scale(0.96, 1.05); }
+      50% { transform: translateY(0) scale(1.05, 0.95); }
+      65% { transform: translateY(-4px) scale(0.98, 1.02); }
+    }
+    .float-item {
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+      animation: floatSmooth linear infinite;
+    }
+    @keyframes floatSmooth {
+      0% {
+        transform: translateY(110vh) scale(0.65) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.85; }
+      85% { opacity: 0.85; }
+      100% {
+        transform: translateY(-12vh) scale(1.15) rotate(25deg);
+        opacity: 0;
+      }
+    }
+    .btn-happy {
+      background: linear-gradient(135deg, #ff4d82 0%, #f43f5e 50%, #e11d48 100%);
+      box-shadow: 0 10px 22px -4px rgba(244, 63, 94, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-happy:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow: 0 16px 28px -4px rgba(244, 63, 94, 0.55);
+    }
+    .btn-happy:active {
+      transform: translateY(1px) scale(0.99);
+    }
+    .sparkle-badge {
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border: 1px solid #fecdd3;
+    }
+  </style>
+</head>
+<body class="text-rose-950 flex items-center justify-center p-4 relative min-h-screen">
+
+  <div id="particles-container" class="fixed inset-0 pointer-events-none z-0"></div>
+  <div class="fixed top-12 left-10 w-72 h-72 bg-pink-300/40 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-10 right-10 w-80 h-80 bg-rose-300/45 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-100/30 rounded-full blur-3xl pointer-events-none"></div>
+
+  <main class="w-full max-w-md relative z-10 my-8">
+
+    <div id="login-card" class="glass-happy rounded-3xl p-6 sm:p-9 transition-all duration-500 relative overflow-hidden">
+      
+      <!-- Top Soft Rainbow Sheen -->
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-amber-200/40 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-pink-300/40 rounded-full blur-2xl pointer-events-none"></div>
+
+      <!-- Happy Heart Mascot & Header -->
+      <div class="text-center mb-6 relative">
+        <div class="inline-block relative cursor-pointer" id="mascot-touch-trigger" title="Tap to make the heart giggly!">
+          <!-- Happy Smiling Heart Mascot (SVG with blushing cheeks and expressive eyes) -->
+          <div id="heart-mascot" class="bouncy-mascot transition-transform duration-300">
+            <svg class="w-24 h-24 mx-auto filter drop-shadow-md" viewBox="0 0 100 100" fill="none">
+              <!-- Heart Base -->
+              <path d="M50 88C50 88 12 62 12 34C12 18 25 10 37 10C44 10 48 15 50 18C52 15 56 10 63 10C75 10 88 18 88 34C88 62 50 88 50 88Z" 
+                    fill="url(#heart-gradient)" stroke="#ff2d6d" stroke-width="2.5" stroke-linejoin="round"/>
+              
+              <!-- Subtle light gloss -->
+              <path d="M22 26C22 18 29 14 36 14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+              <!-- Eyes Container -->
+              <g id="mascot-eyes">
+                <circle cx="36" cy="35" r="4.5" fill="#2d0b1a" />
+                <circle cx="64" cy="35" r="4.5" fill="#2d0b1a" />
+                <!-- Eye Sparkles -->
+                <circle cx="34.5" cy="33.5" r="1.6" fill="#ffffff" />
+                <circle cx="62.5" cy="33.5" r="1.6" fill="#ffffff" />
+              </g>
+
+              <!-- Blushing Cheeks -->
+              <ellipse cx="28" cy="42" rx="4.5" ry="3" fill="#ff769d" opacity="0.8" />
+              <ellipse cx="72" cy="42" rx="4.5" ry="3" fill="#ff769d" opacity="0.8" />
+
+              <!-- Smiling Mouth -->
+              <path id="mascot-mouth" d="M42 43C45 49 55 49 58 43" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="#a30f3a"/>
+              
+              <!-- Little Head Bow / Heart Hair Clip -->
+              <g transform="translate(62, 10) scale(0.7)">
+                <path d="M10 10 C5 5, 0 15, 10 20 C20 15, 15 5, 10 10 Z" fill="#ffd166"/>
+                <circle cx="10" cy="12" r="2.5" fill="#f59e0b"/>
+              </g>
+
+              <defs>
+                <linearGradient id="heart-gradient" x1="12" y1="10" x2="88" y2="88" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff7597"/>
+                  <stop offset="0.5" stop-color="#ff477e"/>
+                  <stop offset="1" stop-color="#f42a63"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-500 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200 mt-1 shadow-sm">
+            ✨ Happy & Joyful
+          </span>
+        </div>
+
+        <h1 class="text-3xl font-brand font-extrabold tracking-tight text-rose-950 mt-2">
+          Besdong Cheukeat
+        </h1>
+        <p class="text-xs sm:text-sm text-rose-600 font-medium mt-0.5 flex items-center justify-center gap-1.5">
+          <span>បេះដូងរីករាយ</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+          <span>Sweet & Happy Love Portal 💕</span>
+        </p>
+      </div>
+
+      <!-- Quick Fill Credential Hint Banner -->
+      <div class="mb-5 p-3 rounded-2xl sparkle-badge flex items-center justify-between gap-2 shadow-sm">
+        <div class="text-xs text-rose-800 leading-tight">
+          <span class="font-bold text-rose-700 flex items-center gap-1">
+            <span class="text-amber-500">🌟</span> Ready Account:
+          </span>
+          <span class="font-mono text-rose-950 font-medium">Cheukeat</span> &bull; 
+          <span class="font-mono text-rose-950 font-medium">CheukeatslVotey</span>
+        </div>
+        <button id="quick-fill-btn" type="button" class="text-xs px-3 py-1.5 rounded-xl bg-white hover:bg-rose-50 text-rose-600 font-semibold border border-rose-300 shadow-sm transition-all hover:scale-105 active:scale-95">
+          Auto Fill ✨
+        </button>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        
+        <!-- Username Input Field -->
+        <div>
+          <label for="username" class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-1.5">
+            Username / ឈ្មោះអ្នកប្រើ
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-rose-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="username" 
+              required 
+              value="Cheukeat"
+              placeholder="Username" 
+              class="input-field-happy w-full pl-11 pr-4 py-3 rounded-2xl text-sm font-semibold text-rose-950 placeholder-rose-300 outline-none"
+            >
+          </div>
+        </div>
+
+        <!-- Password Input Field with Clear Visibility Toggle -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label for="password" class="block text-xs font-bold text-rose-800 uppercase tracking-wider">
+              Password / ពាក្យសម្ងាត់
+            </label>
+            <span id="visibility-label" class="text-[11px] font-semibold text-rose-500 bg-rose-100/70 px-2 py-0.5 rounded-lg">
+              Showing password
+            </span>
+          </div>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-rose-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="password" 
+              required 
+              value="CheukeatslVotey" 
+              placeholder="Enter password" 
+              class="input-field-happy w-full pl-11 pr-12 py-3 rounded-2xl text-sm font-semibold text-rose-950 placeholder-rose-300 outline-none"
+            >
+            <!-- Toggle Show/Hide Button -->
+            <button 
+              type="button" 
+              id="toggle-password" 
+              aria-label="Toggle password visibility"
+              class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-rose-500 hover:text-rose-700 transition-colors p-1"
+              title="Click to hide/show password"
+            >
+              <!-- Eye icon shown as visible initially -->
+              <svg id="eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Feedback Alert Container -->
+        <div id="feedback-box" class="hidden p-3 rounded-2xl text-xs transition-all duration-300 shadow-sm"></div>
+
+        <!-- Happy Submit Button -->
+        <button 
+          type="submit" 
+          id="login-btn"
+          class="w-full btn-happy py-3.5 px-4 rounded-2xl text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 mt-3 cursor-pointer"
+        >
+          <span>ចូលគណនី / Log In with Love</span>
+          <span class="text-base">💖</span>
+        </button>
+      </form>
+
+      <!-- Romantic Footer -->
+      <div class="mt-6 pt-5 border-t border-rose-200/80 text-center text-xs text-rose-500/80 font-medium flex items-center justify-center gap-1.5">
+        <span>Made with endless smiles for</span>
+        <strong class="text-rose-700 font-bold">Cheukeat &amp; Votey</strong>
+        <span>🥰</span>
+      </div>
+    </div>
+
+    <div id="dashboard-card" class="hidden glass-happy rounded-3xl p-6 sm:p-9 transition-all duration-500 text-center relative overflow-hidden">
+      
+      <div class="relative inline-block mb-3">
+        <!-- Big Happy Heart with Crown -->
+        <div class="w-24 h-24 mx-auto rounded-full bg-rose-100 border-2 border-rose-300 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+          <span class="text-5xl animate-bounce">💖</span>
+        </div>
+        <span class="absolute -top-2 -right-1 text-2xl">👑</span>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-brand font-extrabold text-rose-950 mb-1">
+        Welcome Cheukeat! 🎉
+      </h2>
+      <p class="text-xs sm:text-sm text-rose-600 font-medium mb-5">
+        "Cheukeat sl Votey — Happiness fills every single heartbeat! 🥰"
+      </p>
+
+      <!-- Love Statistics / Highlights -->
+      <div class="bg-rose-50/90 rounded-2xl p-4 border border-rose-200 text-left mb-5 space-y-2.5 text-xs shadow-inner">
+        <div class="flex justify-between items-center border-b border-rose-200/70 pb-2">
+          <span class="text-rose-700 font-medium">Heart Mood:</span>
+          <span class="text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> 100% Full of Joy
+          </span>
+        </div>
+        <div class="flex justify-between items-center border-b border-rose-200/70 py-1">
+          <span class="text-rose-700 font-medium">Logged In As:</span>
+          <span class="text-rose-950 font-bold font-mono">Cheukeat (ជឺគាត)</span>
+        </div>
+        <div class="flex justify-between items-center py-1">
+          <span class="text-rose-700 font-medium">Special Person:</span>
+          <span class="text-rose-600 font-bold">Votey (វត្តី) 💕</span>
+        </div>
+        <div class="flex justify-between items-center pt-1 border-t border-rose-200/70">
+          <span class="text-rose-700 font-medium">Love Taps Given:</span>
+          <span id="love-count-badge" class="text-rose-600 font-extrabold bg-rose-200/70 px-2 py-0.5 rounded-lg text-sm">
+            0 ❤️
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button id="tap-love-btn" class="flex-1 py-3 px-4 rounded-2xl btn-happy text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md">
+          <span>Tap Happy Love!</span>
+          <span class="text-sm">🌸</span>
+        </button>
+        <button id="logout-btn" class="flex-1 py-3 px-4 rounded-2xl bg-white hover:bg-rose-100 text-rose-700 text-xs font-bold border border-rose-300 transition-all shadow-sm">
+          Log Out / ចាកចេញ
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Valid predefined credentials requested
+    const VALID_USER = "Cheukeat";
+    const VALID_PASS = "CheukeatslVotey";
+
+    // Selectors
+    const loginCard = document.getElementById('login-card');
+    const dashboardCard = document.getElementById('dashboard-card');
+    const loginForm = document.getElementById('login-form');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const togglePasswordBtn = document.getElementById('toggle-password');
+    const visibilityLabel = document.getElementById('visibility-label');
+    const eyeIcon = document.getElementById('eye-icon');
+    const feedbackBox = document.getElementById('feedback-box');
+    const quickFillBtn = document.getElementById('quick-fill-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const tapLoveBtn = document.getElementById('tap-love-btn');
+    const loveCountBadge = document.getElementById('love-count-badge');
+    const particlesContainer = document.getElementById('particles-container');
+    const mascotMouth = document.getElementById('mascot-mouth');
+    const mascotEyes = document.getElementById('mascot-eyes');
+    const mascotTouchTrigger = document.getElementById('mascot-touch-trigger');
+    const heartMascot = document.getElementById('heart-mascot');
+
+    let loveCount = 0;
+    let isPasswordVisible = true; // Initially shown as requested
+
+    // Happy floating icons
+    const happySymbols = ['💖', '💕', '🥰', '🌸', '✨', '💛', '💗', '🍓', '🎀'];
+
+    function spawnHappyParticle() {
+      const el = document.createElement('div');
+      el.className = 'float-item';
+      el.textContent = happySymbols[Math.floor(Math.random() * happySymbols.length)];
+      el.style.left = (Math.random() * 92 + 2) + 'vw';
+      el.style.fontSize = (Math.random() * 16 + 16) + 'px';
+      const duration = Math.random() * 5 + 6;
+      el.style.animationDuration = duration + 's';
+      particlesContainer.appendChild(el);
+
+      setTimeout(() => {
+        el.remove();
+      }, duration * 1000);
+    }
+
+    // Launch floating hearts periodically
+    setInterval(spawnHappyParticle, 700);
+    for (let i = 0; i < 8; i++) spawnHappyParticle();
+
+    // Mascot animations & facial expressions
+    function setMascotExpression(type) {
+      if (type === 'wink') {
+        mascotEyes.innerHTML = `
+          <circle cx="36" cy="35" r="4.5" fill="#2d0b1a" />
+          <circle cx="34.5" cy="33.5" r="1.6" fill="#ffffff" />
+          <path d="M59 36 Q64 30 69 36" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        `;
+        mascotMouth.setAttribute('d', 'M40 43C45 52 55 52 60 43');
+      } else if (type === 'shy') {
+        mascotEyes.innerHTML = `
+          <path d="M31 36 Q36 30 41 36" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M59 36 Q64 30 69 36" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        `;
+        mascotMouth.setAttribute('d', 'M44 45 Q50 48 56 45');
+      } else {
+        // Normal wide happy smile
+        mascotEyes.innerHTML = `
+          <circle cx="36" cy="35" r="4.5" fill="#2d0b1a" />
+          <circle cx="64" cy="35" r="4.5" fill="#2d0b1a" />
+          <circle cx="34.5" cy="33.5" r="1.6" fill="#ffffff" />
+          <circle cx="62.5" cy="33.5" r="1.6" fill="#ffffff" />
+        `;
+        mascotMouth.setAttribute('d', 'M42 43C45 49 55 49 58 43');
+      }
+    }
+
+    // Interactive mascot taps
+    mascotTouchTrigger.addEventListener('click', () => {
+      heartMascot.classList.remove('bouncy-mascot');
+      heartMascot.style.transform = 'scale(1.25) rotate(-6deg)';
+      setMascotExpression('wink');
+
+      if (window.confetti) {
+        confetti({
+          particleCount: 25,
+          spread: 60,
+          origin: { y: 0.35 },
+          colors: ['#ff4d82', '#ff8fa3', '#ffd166']
+        });
+      }
+
+      setTimeout(() => {
+        heartMascot.style.transform = '';
+        heartMascot.classList.add('bouncy-mascot');
+        setMascotExpression('normal');
+      }, 700);
+    });
+
+    // Password visibility toggle logic
+    togglePasswordBtn.addEventListener('click', () => {
+      isPasswordVisible = !isPasswordVisible;
+      if (isPasswordVisible) {
+        passwordInput.type = 'text';
+        visibilityLabel.textContent = 'Showing password';
+        visibilityLabel.className = 'text-[11px] font-semibold text-rose-500 bg-rose-100/70 px-2 py-0.5 rounded-lg';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        `;
+        setMascotExpression('normal');
+      } else {
+        passwordInput.type = 'password';
+        visibilityLabel.textContent = 'Password hidden';
+        visibilityLabel.className = 'text-[11px] font-semibold text-zinc-500 bg-zinc-100 px-2 py-0.5 rounded-lg';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
+        `;
+        setMascotExpression('shy');
+      }
+    });
+
+    // Auto Fill credentials button
+    quickFillBtn.addEventListener('click', () => {
+      usernameInput.value = VALID_USER;
+      passwordInput.value = VALID_PASS;
+      showFeedback('Credentials loaded with love! Cheukeat / CheukeatslVotey', 'info');
+      setMascotExpression('wink');
+      setTimeout(() => setMascotExpression('normal'), 1200);
+    });
+
+    // Feedback message display
+    function showFeedback(message, type = 'error') {
+      feedbackBox.classList.remove('hidden');
+      if (type === 'error') {
+        feedbackBox.className = 'p-3 rounded-2xl text-xs bg-rose-100 text-rose-800 border border-rose-300 flex items-center gap-2 font-medium';
+        feedbackBox.innerHTML = `
+          <span class="text-base">🥺</span>
+          <span>${message}</span>
+        `;
+        setMascotExpression('shy');
+      } else if (type === 'success') {
+        feedbackBox.className = 'p-3 rounded-2xl text-xs bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-2 font-medium';
+        feedbackBox.innerHTML = `
+          <span class="text-base">🎉</span>
+          <span>${message}</span>
+        `;
+      } else {
+        feedbackBox.className = 'p-3 rounded-2xl text-xs bg-pink-100 text-pink-900 border border-pink-200 flex items-center gap-2 font-medium';
+        feedbackBox.innerHTML = `<span class="text-base">💖</span><span>${message}</span>`;
+      }
+    }
+
+    // Submit handler
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const enteredUser = usernameInput.value.trim();
+      const enteredPass = passwordInput.value.trim();
+
+      if (enteredUser === VALID_USER && enteredPass === VALID_PASS) {
+        showFeedback("Yay! Welcome Cheukeat & Votey! 💖", "success");
+        setMascotExpression('wink');
+
+        // Confetti burst
+        if (window.confetti) {
+          confetti({
+            particleCount: 80,
+            spread: 90,
+            origin: { y: 0.6 },
+            colors: ['#ff4d82', '#ff7597', '#ffd166', '#a7f3d0']
+          });
+        }
+
+        setTimeout(() => {
+          loginCard.classList.add('hidden');
+          dashboardCard.classList.remove('hidden');
+        }, 650);
+      } else {
+        showFeedback("Oops! Please check your credentials: Username is 'Cheukeat' & Password is 'CheukeatslVotey' 💕", "error");
+      }
+    });
+
+    // Dashboard Logout
+    logoutBtn.addEventListener('click', () => {
+      dashboardCard.classList.add('hidden');
+      loginCard.classList.remove('hidden');
+      feedbackBox.classList.add('hidden');
+      setMascotExpression('normal');
+    });
+
+    // Dashboard Happy Love Button
+    tapLoveBtn.addEventListener('click', () => {
+      loveCount++;
+      loveCountBadge.textContent = `${loveCount} ❤️`;
+      
+      // Multi-directional small confetti bursts
+      if (window.confetti) {
+        confetti({
+          particleCount: 30,
+          spread: 50,
+          origin: { y: 0.7 },
+          colors: ['#ff4d82', '#f43f5e', '#ffd166', '#ff85a1']
+        });
+      }
+
+      for (let i = 0; i < 4; i++) {
+        spawnHappyParticle();
+      }
+    });
+  </script>
+</body>
+</html>
