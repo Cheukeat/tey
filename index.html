@@ -1,110 +1,528 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0d0c">
-<title>Eevee — Music, Reimagined</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-/* Combined styles from style.css[span_0](start_span)[span_0](end_span) */
-*{box-sizing:border-box} :root{--bg:#0b0d0c;--panel:#111512;--panel2:#171d18;--line:#2a302b;--text:#f4f7f2;--muted:#9ba59a;--green:#b8f36b;--green2:#5ce09a}body{margin:0;background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-size:14px}button,a{font:inherit}button{cursor:pointer;color:inherit}a{color:inherit;text-decoration:none}.sidebar{position:fixed;top:0;bottom:90px;left:0;width:238px;background:#090b0a;border-right:1px solid #1c211d;padding:25px 17px;display:flex;flex-direction:column;z-index:3}.logo{display:flex;align-items:center;gap:10px;font:700 18px "Space Grotesk",sans-serif;letter-spacing:-.6px;margin:0 0 36px 4px}.logo-icon{width:37px;height:37px;border-radius:11px;background:var(--green);color:#10200f;display:grid;place-items:center;font-size:24px;position:relative}.logo-icon span{font-size:12px;position:absolute;right:4px;top:0}.logo-sub{display:block;font:600 8px "DM Sans",sans-serif;letter-spacing:2px;color:#788276;margin-top:3px}.side-nav{display:grid;gap:8px}.nav-item{display:flex;gap:15px;align-items:center;border:0;background:transparent;text-align:left;color:#a5aea4;padding:12px;border-radius:8px;font-weight:600}.nav-item span{font-size:22px;width:22px;text-align:center}.nav-item:hover,.nav-item.active{background:#1b231b;color:#fff}.nav-item.active span{color:var(--green)}.side-label{margin:36px 10px 13px;color:#7f8b7e;font-size:9px;font-weight:700;letter-spacing:1.8px;display:flex;justify-content:space-between;align-items:center}.side-label button{background:none;border:0;color:#a5aea4;font-size:20px}.playlist-list{display:grid;gap:5px}.playlist-link{border:0;background:transparent;text-align:left;padding:10px 12px;border-radius:7px;color:#a5aea4;font-size:12px}.playlist-link:hover{background:#1a201b;color:#fff}.sidebar-bottom{margin-top:auto}.mini-tip{background:linear-gradient(140deg,#18241a,#101510);border:1px solid #2c3b2a;border-radius:12px;padding:15px}.tip-icon{display:grid;place-items:center;background:#b8f36b1a;color:var(--green);width:30px;height:30px;border-radius:8px;margin-bottom:12px}.mini-tip b{font-size:12px}.mini-tip p{font-size:10px;line-height:1.7;color:#98a397;margin:7px 0 0}.sidebar-bottom>a{display:block;color:#7e8b7e;font-size:10px;margin:17px 5px}.main{margin-left:238px;margin-right:260px;min-height:calc(100vh - 90px);padding-bottom:120px}.topbar{height:75px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:2;background:#0b0d0ceF;backdrop-filter:blur(16px)}.history-buttons{display:flex;gap:9px}.history-buttons button{border:0;background:#1b211c;color:#d9e0d7;width:31px;height:31px;border-radius:50%;font-size:24px;line-height:20px}.top-actions{display:flex;align-items:center;gap:15px}.web-badge{font-size:9px;letter-spacing:1.5px;color:#a3b19f;display:flex;align-items:center;gap:7px}.web-badge i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px #b8f36b}.upload-btn,.outline-btn{border:1px solid #3a453b;background:#171d18;color:#eaf0e8;padding:10px 14px;border-radius:8px;font-size:11px;font-weight:700}.upload-btn:hover,.outline-btn:hover{border-color:var(--green)}.avatar{width:30px;height:30px;border-radius:50%;border:0;background:var(--green);color:#132010;font-weight:700}.content{padding:4px 28px}.hero-banner{min-height:305px;border:1px solid #2e3d2d;border-radius:17px;overflow:hidden;background:linear-gradient(105deg,#1c2c1b,#111a12 60%,#101511);display:flex;align-items:center;justify-content:space-between;padding:32px 35px;position:relative}.hero-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:#a2ee4b13;filter:blur(40px);right:10%;top:0}.hero-text{position:relative;z-index:1;max-width:410px}.eyebrow{font-size:9px;letter-spacing:2px;color:var(--green);font-weight:700}.hero-text h1{font:700 clamp(35px,4vw,52px)/1.03 "Space Grotesk",sans-serif;letter-spacing:-2.5px;margin:17px 0}.hero-text h1 span{color:var(--green)}.hero-text p{font-size:12px;line-height:1.8;color:#b1bdb0;max-width:355px}.hero-buttons{display:flex;gap:9px;margin-top:21px;flex-wrap:wrap}.btn-light{border:0;border-radius:8px;background:var(--green);color:#14200f;font-weight:700;font-size:11px;padding:12px 16px}.btn-light:hover{background:#ceff96}.btn-glass{border:1px solid #4a5847;border-radius:8px;background:#ffffff08;color:#eff6ec;font-weight:600;font-size:11px;padding:12px 16px}.hero-art{position:relative;width:205px;height:205px;flex:0 0 205px;margin:0 15px 0 25px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#466e35 0,#203a23 38%,#152519 64%,transparent 68%)}.art-orbit{position:absolute;border:1px solid #c2f58b65;border-radius:50%;width:220px;height:80px;transform:rotate(35deg)}.orbit2{transform:rotate(-35deg);width:230px;height:105px}.art-center{display:grid;place-items:center;border:1px solid #d8ffad80;background:#d7ffa51a;border-radius:50%;width:90px;height:90px;font-size:50px;color:#d5ffad;text-shadow:0 0 24px #b8f36b;box-shadow:0 0 45px #b8f36b25}.art-caption{position:absolute;bottom:-8px;left:25px;font-size:8px;letter-spacing:2px;line-height:1.7;color:#c6d9bf}.art-caption b{font-size:10px;color:#fff}.section-title{display:flex;align-items:end;justify-content:space-between;margin:34px 0 17px}.section-title h2{font:600 23px "Space Grotesk",sans-serif;letter-spacing:-.8px;margin:8px 0 0}.muted-text{color:#879286;font-size:10px}.track-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.track-card{border:1px solid #242b25;border-radius:12px;background:#121713;padding:12px;min-width:0;cursor:pointer;transition:background .2s,border-color .2s;position:relative}.track-card:hover{background:#1b241c;border-color:#43513f}.cover{width:100%;aspect-ratio:1;border-radius:8px;background:linear-gradient(145deg,#425f34,#16271a);display:grid;place-items:center;font-size:36px;color:#d0ffa0;position:relative;overflow:hidden}.cover:before,.large-cover:before{content:"";position:absolute;inset:15%;border:1px solid #d5ffa044;border-radius:50%;transform:rotate(-30deg) scaleY(.5)}.cover:nth-child(odd){background:linear-gradient(145deg,#3c3a61,#161a2d)}.track-card h3{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:12px 0 5px}.track-card p{font-size:10px;color:#9aa599;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0}.card-play{position:absolute;right:19px;top:calc(100% - 82px);border:0;background:var(--green);color:#14200f;width:34px;height:34px;border-radius:50%;box-shadow:0 5px 20px #0007;opacity:0;transform:translateY(6px);transition:.2s}.track-card:hover .card-play{opacity:1;transform:translateY(0)}.empty-card{grid-column:1/-1;min-height:210px;border:1px dashed #384438;border-radius:13px;background:#111612;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px}.empty-icon{font-size:32px;color:var(--green);background:#b8f36b12;border-radius:12px;padding:10px 17px;margin-bottom:12px}.empty-card h3{font-size:15px;margin:0 0 8px}.empty-card p{max-width:350px;font-size:11px;color:#9ba69a;line-height:1.7;margin:0 0 17px}.library-callout{display:flex;align-items:center;gap:13px;margin-top:24px;padding:17px;border:1px solid #28342a;background:#111712;border-radius:12px}.callout-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#b8f36b1b;color:var(--green);font-size:23px}.library-callout h3{font-size:12px;margin:0 0 5px}.library-callout p{font-size:10px;color:#94a091;margin:0}.library-callout>div:nth-child(2){flex:1}.right-panel{position:fixed;right:0;top:0;bottom:90px;width:260px;padding:24px 18px;background:#0e120f;border-left:1px solid #242b25;overflow:auto}.panel-head{display:flex;align-items:center;justify-content:space-between;font-size:13px;margin-bottom:20px}.panel-head button{background:none;border:0;color:#a3aea0;font-size:24px}.large-cover{width:100%;aspect-ratio:1;border-radius:12px;background:radial-gradient(circle,#537c39,#17281a 70%);display:grid;place-items:center;font-size:65px;color:#d6ffae;position:relative;overflow:hidden}.right-panel h2{font:600 17px "Space Grotesk",sans-serif;margin:17px 0 5px;overflow-wrap:anywhere}.right-panel>p{font-size:11px;color:#9ba79a;margin-bottom:21px}.side-card{border:1px solid #283129;background:#141a15;border-radius:11px;padding:13px;margin-top:15px}.side-card-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:13px}.lyrics-tag{font-size:8px;color:var(--green);letter-spacing:1px}.side-card>p{font-size:10px;line-height:1.7;color:#9ba79a}.side-card textarea{width:100%;resize:vertical;background:#0d110e;border:1px solid #2c352d;border-radius:7px;padding:9px;color:#eaf0e8;font:11px "DM Sans",sans-serif;outline:none}.side-card textarea:focus{border-color:#7ea95d}.full-width{width:100%;margin-top:9px;padding:9px}.queue-list{font-size:10px;color:#929e90}.queue-item{display:flex;gap:9px;align-items:center;margin:10px 0;cursor:pointer}.queue-mini{width:30px;height:30px;border-radius:5px;background:#283d28;display:grid;place-items:center;color:#c7ff9a}.queue-item b{display:block;font-size:10px;color:#e7eee5;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.queue-item span{display:block;color:#8b9789;margin-top:3px}.player{height:90px;position:fixed;z-index:5;bottom:0;left:0;right:0;background:#111512;border-top:1px solid #2b322c;display:grid;grid-template-columns:minmax(190px,1fr) minmax(260px,1.3fr) minmax(180px,1fr);align-items:center;padding:0 20px;gap:20px}.now-playing{display:flex;align-items:center;gap:11px;min-width:0}.tiny-cover{width:49px;height:49px;flex:0 0 49px;display:grid;place-items:center;border-radius:6px;background:linear-gradient(145deg,#4a6e35,#17281a);color:#d5ffab;font-size:24px}.now-meta{min-width:0;display:grid;gap:5px}.now-meta b{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.now-meta span{font-size:9px;color:#9ba599;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.like-btn{border:0;background:none;color:#9aa697;font-size:21px}.like-btn.liked{color:var(--green)}.controls{display:grid;gap:8px}.control-buttons{display:flex;justify-content:center;align-items:center;gap:21px}.control-buttons button,.player-tools button{border:0;background:none;color:#a2ada0;font-size:17px}.control-buttons button:hover,.player-tools button:hover{color:white}.control-buttons .play-button{width:33px;height:33px;border-radius:50%;background:#f4f8f1;color:#111;font-size:13px;padding-left:3px}.control-buttons .play-button:hover{background:var(--green);color:#111}.control-buttons button.selected{color:var(--green)}.timeline{display:flex;align-items:center;gap:9px;color:#899487;font-size:9px}.timeline input,.player-tools input{width:100%;accent-color:var(--green);height:4px;cursor:pointer}.player-tools{display:flex;justify-content:flex-end;align-items:center;gap:13px;color:#a2ada0;font-size:12px}.player-tools input{max-width:90px}.player-tools button{font-size:17px}#toast{position:fixed;z-index:10;left:50%;bottom:108px;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#e7f5df;color:#132010;padding:11px 17px;border-radius:9px;font-size:11px;font-weight:700;transition:.25s;box-shadow:0 8px 30px #0005}#toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:1180px){.right-panel{display:none}.main{margin-right:0}.track-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero-art{transform:scale(.85);margin-right:0}.player{grid-template-columns:minmax(180px,1fr) minmax(240px,1.2fr) minmax(125px,.7fr)}.player-tools{gap:8px}}
-@media(max-width:760px){.sidebar{width:68px;padding:19px 9px;bottom:78px;align-items:center}.logo{margin:0 0 32px}.logo>span:last-child,.nav-item:not(span),.side-label,.playlist-list,.sidebar-bottom{display:none}.side-nav{width:100%}.nav-item{font-size:0;justify-content:center;padding:11px 0}.nav-item span{font-size:22px}.main{margin-left:68px;padding-bottom:100px}.topbar{height:64px;padding:0 15px}.content{padding:4px 15px}.hero-banner{padding:25px 22px;min-height:270px}.hero-art{display:none}.hero-text h1{font-size:43px}.track-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.player{height:78px;padding:0 10px;grid-template-columns:minmax(0,1fr) auto;gap:8px}.now-playing{gap:8px}.tiny-cover{width:40px;height:40px;flex-basis:40px}.now-meta b{font-size:10px}.like-btn{display:none}.controls{gap:0}.control-buttons{gap:13px}.control-buttons button{font-size:14px}.control-buttons .play-button{width:30px;height:30px}.timeline{gap:5px}.player-tools{display:none}.player{left:0}.library-callout{align-items:flex-start;flex-wrap:wrap}.library-callout>div:nth-child(2){min-width:calc(100% - 60px)}.library-callout .outline-btn{margin-left:51px}.section-title h2{font-size:20px}.web-badge{display:none}}
-@media(max-width:430px){.hero-text h1{font-size:37px}.hero-text p{font-size:11px}.hero-banner{padding:22px 17px}.hero-buttons button{padding:10px 11px}.player{grid-template-columns:minmax(0,1fr) auto}.control-buttons{gap:8px}.control-buttons #shuffleBtn,.control-buttons #repeatBtn{display:none}.now-meta{max-width:120px}.timeline{font-size:8px}.top-actions{gap:9px}.upload-btn{padding:9px 10px}.track-card{padding:9px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Besdong Cheukeat - Happy Heart Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Kantumruy+Pro:wght@400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Kantumruy Pro', sans-serif;
+      background: radial-gradient(circle at 50% 15%, #ffe4ec 0%, #ffd1df 40%, #ffb6ce 80%, #ffa5c5 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .font-brand {
+      font-family: 'Outfit', 'Kantumruy Pro', sans-serif;
+    }
+    .glass-happy {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.28),
+                  0 0 0 1px rgba(255, 228, 230, 0.8),
+                  inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    }
+    .input-field-happy {
+      background: rgba(255, 245, 248, 0.9);
+      border: 1.5px solid #fed7e2;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .input-field-happy:focus {
+      border-color: #fb7185;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(251, 113, 133, 0.22);
+    }
+    .bouncy-mascot {
+      animation: happyBounce 2.4s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+    @keyframes happyBounce {
+      0%, 100% { transform: translateY(0) scale(1, 1); }
+      30% { transform: translateY(-10px) scale(0.96, 1.05); }
+      50% { transform: translateY(0) scale(1.05, 0.95); }
+      65% { transform: translateY(-4px) scale(0.98, 1.02); }
+    }
+    .float-item {
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+      animation: floatSmooth linear infinite;
+    }
+    @keyframes floatSmooth {
+      0% {
+        transform: translateY(110vh) scale(0.65) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.85; }
+      85% { opacity: 0.85; }
+      100% {
+        transform: translateY(-12vh) scale(1.15) rotate(25deg);
+        opacity: 0;
+      }
+    }
+    .btn-happy {
+      background: linear-gradient(135deg, #ff4d82 0%, #f43f5e 50%, #e11d48 100%);
+      box-shadow: 0 10px 22px -4px rgba(244, 63, 94, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-happy:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow: 0 16px 28px -4px rgba(244, 63, 94, 0.55);
+    }
+    .btn-happy:active {
+      transform: translateY(1px) scale(0.99);
+    }
+    .sparkle-badge {
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border: 1px solid #fecdd3;
+    }
+  </style>
 </head>
-<body>
-<aside class="sidebar">
-  <a class="logo" href="#"><span class="logo-icon">e<span>♪</span></span><span>Eevee<span class="logo-sub">SPOTIFY WEB</span></span></a>
-  <nav class="side-nav">
-    <button class="nav-item active" data-view="home"><span>⌂</span> Home</button>
-    <button class="nav-item" data-view="search"><span>⌕</span> Search</button>
-    <button class="nav-item" data-view="library"><span>▤</span> Your Library</button>
-  </nav>
-  <div class="side-label">YOUR COLLECTION <button id="newPlaylist" title="Create playlist">＋</button></div>
-  <div id="playlistList" class="playlist-list"><button class="playlist-link" data-playlist="liked">♥ &nbsp; Liked Songs</button></div>
-  <div class="sidebar-bottom"><div class="mini-tip"><span class="tip-icon">♫</span><b>Your music, your way</b><p>Play audio files from your device, build playlists, and keep your library in this browser.</p></div><a href="https://github.com/whoeevee/EeveeSpotifyReborn" target="_blank" rel="noopener">Original project ↗</a></div>
-</aside>
-<main class="main">
-  <header class="topbar"><div class="history-buttons"><button id="backBtn" aria-label="Back">‹</button><button id="forwardBtn" aria-label="Forward">›</button></div><div class="top-actions"><span class="web-badge"><i></i> WEB PLAYER</span><button id="uploadTop" class="upload-btn">＋ Add music</button><button class="avatar" title="Local demo">K</button></div></header>
-  <section class="content" id="content">
-    <section class="hero-banner"><div class="hero-glow"></div><div class="hero-text"><span class="eyebrow">EEVEE WEB EXPERIENCE</span><h1>Your music.<br><span>Reimagined.</span></h1><p>A Spotify-inspired browser player with your own local tracks, playlists, queue, and lyrics panel.</p><div class="hero-buttons"><button class="btn-light" id="heroUpload">＋ Add your music</button><button class="btn-glass" id="demoBtn">Explore player</button></div></div><div class="hero-art"><div class="art-orbit orbit1"></div><div class="art-orbit orbit2"></div><div class="art-center">♪</div><div class="art-caption">SOUND<br><b>IN YOUR CONTROL</b></div></div></section>
-    <div class="section-title"><div><span class="eyebrow">MADE FOR YOUR LIBRARY</span><h2>Jump back in</h2></div><span class="muted-text" id="trackCount">0 tracks</span></div>
-    <div id="trackGrid" class="track-grid"><div class="empty-card"><div class="empty-icon">♫</div><h3>Your next favorite starts here</h3><p>Add audio files from your device to start listening. Your files stay in this browser session.</p><button class="btn-light" id="emptyUpload">Choose audio files</button></div></div>
-    <section class="library-callout"><div class="callout-icon">＋</div><div><h3>Bring your own music</h3><p>Import MP3, WAV, M4A, OGG, or other audio files supported by your browser.</p></div><button id="calloutUpload" class="outline-btn">Choose files</button></section>
-    <input type="file" id="fileInput" accept="audio/*" multiple hidden>
-  </section>
-</main>
-<aside class="right-panel" id="rightPanel"><div class="panel-head"><b>Now playing</b><button id="closePanel" aria-label="Close panel">×</button></div><div class="large-cover" id="largeCover"><span>♪</span></div><h2 id="sideTitle">Nothing playing yet</h2><p id="sideArtist">Choose a track from your library</p><div class="side-card"><div class="side-card-head"><b>Lyrics</b><span class="lyrics-tag">LOCAL</span></div><p id="lyricsText">Lyrics aren't automatically available for local files. Add your own lyrics below if you have them.</p><textarea id="lyricsInput" placeholder="Paste lyrics for the current song…" rows="5"></textarea><button id="saveLyrics" class="outline-btn full-width">Save lyrics</button></div><div class="side-card queue-card"><div class="side-card-head"><b>Up next</b><span id="queueCount">0 tracks</span></div><div id="queueList" class="queue-list"><p class="muted-text">Your queue is empty.</p></div></div></aside>
-<footer class="player">
-  <div class="now-playing"><div class="tiny-cover" id="tinyCover">♪</div><div class="now-meta"><b id="playerTitle">Nothing playing</b><span id="playerArtist">Add audio files to begin</span></div><button id="likeBtn" class="like-btn" title="Like track">♡</button></div>
-  <div class="controls"><div class="control-buttons"><button id="shuffleBtn" title="Shuffle">⤨</button><button id="prevBtn" title="Previous">|‹</button><button id="playBtn" class="play-button" title="Play">▶</button><button id="nextBtn" title="Next">›|</button><button id="repeatBtn" title="Repeat">↻</button></div><div class="timeline"><span id="currentTime">0:00</span><input id="seekBar" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div></div>
-  <div class="player-tools"><button id="queueToggle" title="Queue">☷</button><button id="lyricsToggle" title="Lyrics">▤</button><span>🔊</span><input id="volumeBar" type="range" min="0" max="1" step=".01" value=".8"></div>
-  <audio id="audio" preload="metadata"></audio>
-</footer>
-<div id="toast" role="status" aria-live="polite"></div>
+<body class="text-rose-950 flex items-center justify-center p-4 relative min-h-screen">
 
-<script>
-/* Combined script from app.js[span_1](start_span)[span_1](end_span) */
-const $ = id => document.getElementById(id);
-const audio = $('audio');
-let tracks = [], current = -1, liked = new Set(), playlists = {}, currentPlaylist = 'all', shuffle = false, repeat = false;
-const coverGradients = [
- 'linear-gradient(145deg,#587d3b,#18291b)','linear-gradient(145deg,#5a497c,#1c1b35)',
- 'linear-gradient(145deg,#a15c45,#35201b)','linear-gradient(145deg,#347d7b,#142c30)',
- 'linear-gradient(145deg,#927238,#302716)','linear-gradient(145deg,#8b4d75,#311a2b)'
-];
-function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2200)}
-function fmt(s){if(!Number.isFinite(s)||s<0)return '0:00';return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0')}
-function activeTracks(){if(currentPlaylist==='liked')return tracks.filter(t=>liked.has(t.id));if(playlists[currentPlaylist])return tracks.filter(t=>playlists[currentPlaylist].has(t.id));return tracks}
-function renderTracks(){
- const list=activeTracks();$('trackCount').textContent=list.length+' track'+(list.length===1?'':'s');
- const grid=$('trackGrid');
- if(!list.length){grid.innerHTML='<div class="empty-card"><div class="empty-icon">♫</div><h3>'+ (currentPlaylist==='liked'?'No liked songs yet':'Your next favorite starts here')+'</h3><p>Add audio files from your device to start listening. Your files stay in this browser session.</p><button class="btn-light" id="emptyUpload2">Choose audio files</button></div>';$('emptyUpload2').onclick=chooseFiles;return}
- grid.innerHTML=list.map((t,i)=>`<article class="track-card" data-id="${t.id}"><div class="cover" style="background:${coverGradients[t.color%coverGradients.length]}">♪</div><button class="card-play" data-play="${t.id}" aria-label="Play ${esc(t.name)}">▶</button><h3>${esc(t.name)}</h3><p>${esc(t.artist)}</p></article>`).join('');
- grid.querySelectorAll('.track-card').forEach(card=>card.addEventListener('click',e=>{if(!e.target.closest('.card-play'))playId(card.dataset.id)}));
- grid.querySelectorAll('[data-play]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();playId(b.dataset.play)}));
-}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function renderPlaylists(){
- const el=$('playlistList');
- el.innerHTML='<button class="playlist-link" data-playlist="liked">♥ &nbsp; Liked Songs</button>'+Object.keys(playlists).map(name=>`<button class="playlist-link" data-playlist="${esc(name)}">▤ &nbsp; ${esc(name)}</button>`).join('');
- el.querySelectorAll('[data-playlist]').forEach(b=>b.addEventListener('click',()=>{currentPlaylist=b.dataset.playlist;renderTracks();document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));}));
-}
-function updateNow(){
- const t=tracks[current];
- if(!t)return;
- $('playerTitle').textContent=t.name;$('playerArtist').textContent=t.artist;$('sideTitle').textContent=t.name;$('sideArtist').textContent=t.artist;
- $('tinyCover').style.background=coverGradients[t.color\%coverGradients.length];$('largeCover').style.background=coverGradients[t.color%coverGradients.length];
- $('likeBtn').textContent=liked.has(t.id)?'♥':'♡';$('likeBtn').classList.toggle('liked',liked.has(t.id));
- $('lyricsInput').value=t.lyrics\vert{}\vert{}'';$('lyricsText').textContent=t.lyrics||"Lyrics aren't automatically available for local files. Add your own lyrics below if you have them.";
- $('playBtn').textContent=audio.paused?'▶':'Ⅱ';$('duration').textContent=fmt(audio.duration);
- renderQueue();
-}
-function playId(id){const index=tracks.findIndex(t=>t.id===id);if(index<0)return;current=index;audio.src=tracks[index].url;audio.load();audio.play().then(()=>{$('playBtn').textContent='Ⅱ';}).catch(()=>toast('Tap play to start this track'));updateNow();renderTracks()}
-function next(){if(!tracks.length)return;let idx;if(shuffle){idx=Math.floor(Math.random()*tracks.length)}else{idx=(current+1)%tracks.length}playId(tracks[idx].id)}
-function prev(){if(!tracks.length)return;if(audio.currentTime>3){audio.currentTime=0;return}playId(tracks[(current-1+tracks.length)%tracks.length].id)}
-function chooseFiles(){$('fileInput').click()}
-function importFiles(files){let added=0;[...files].filter(f=>f.type.startsWith('audio/')).forEach(f=>{const id='t'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);tracks.push({id,name:f.name.replace(/\.[^.]+$/,''),artist:'Local audio',file:f,url:URL.createObjectURL(f),color:tracks.length,lyrics:''});added++});if(added){currentPlaylist='all';renderTracks();toast('Added '+added+' track'+(added===1?'':'s'));if(current<0)playId(tracks[0].id)}else toast('Choose supported audio files');$('fileInput').value=''}$('fileInput').addEventListener('change',e=>importFiles(e.target.files));
-['uploadTop','heroUpload','emptyUpload','calloutUpload'].forEach(id=>$(id).addEventListener('click',chooseFiles));$('demoBtn').addEventListener('click',()=>{document.querySelector('.section-title').scrollIntoView({behavior:'smooth'});toast('Add your own tracks to begin listening')});
-$('playBtn').addEventListener('click',()=>{if(current<0){chooseFiles();return}if(audio.paused)audio.play().then(()=>{$('playBtn').textContent='Ⅱ'}).catch(()=>toast('Choose a track first'));else audio.pause()});
-audio.addEventListener('play',()=>{$('playBtn').textContent='Ⅱ'});
-audio.addEventListener('pause',()=>{$('playBtn').textContent='▶'});
-audio.addEventListener('ended',()=>{if(repeat){audio.currentTime=0;audio.play()}else next()});
-audio.addEventListener('timeupdate',()=>{if(Number.isFinite(audio.duration))$('seekBar').value=audio.currentTime/audio.duration*100;$('currentTime').textContent=fmt(audio.currentTime);$('duration').textContent=fmt(audio.duration)});
-$('seekBar').addEventListener('input',()=>{if(Number.isFinite(audio.duration))audio.currentTime=audio.duration*Number($('seekBar').value)/100});
-$('volumeBar').addEventListener('input',()=>audio.volume=Number($('volumeBar').value));audio.volume=.8;
-$('nextBtn').addEventListener('click',next);$('prevBtn').addEventListener('click',prev);$('shuffleBtn').addEventListener('click',()=>{shuffle=!shuffle;$('shuffleBtn').classList.toggle('selected',shuffle);toast('Shuffle '+(shuffle?'on':'off'))});$('repeatBtn').addEventListener('click',()=>{repeat=!repeat;$('repeatBtn').classList.toggle('selected',repeat);toast('Repeat '+(repeat?'on':'off'))});$('likeBtn').addEventListener('click',()=>{if(current<0)return;const id=tracks[current].id;if(liked.has(id))liked.delete(id);else liked.add(id);updateNow();renderTracks()});
-$('newPlaylist').addEventListener('click',()=>{const name=prompt('Name your playlist');if(!name\vert{}\vert{}!name.trim())return;if(playlists[name.trim()]){toast('That playlist already exists');return}playlists[name.trim()]=new Set();renderPlaylists();toast('Playlist created')});$('saveLyrics').addEventListener('click',()=>{if(current<0){toast('Play a track first');return}tracks[current].lyrics=$('lyricsInput').value;$('lyricsText').textContent=tracks[current].lyrics||'No lyrics saved yet.';toast('Lyrics saved for this session')});
-function renderQueue(){const upcoming=tracks.filter((t,i)=>i!==current);$('queueCount').textContent=upcoming.length+' tracks';$('queueList').innerHTML=upcoming.length?upcoming.slice(0,8).map(t=>`<div class="queue-item" data-id="${t.id}"><div class="queue-mini">♪</div><div><b>${esc(t.name)}</b><span>${esc(t.artist)}</span></div></div>`).join(''):'<p class="muted-text">Your queue is empty.</p>';$('queueList').querySelectorAll('[data-id]').forEach(el=>el.addEventListener('click',()=>playId(el.dataset.id)))}
-$('queueToggle').addEventListener('click',()=>{const panel=$('rightPanel');panel.style.display=panel.style.display==='block'?'none':'block';if(panel.style.display==='block'){panel.style.position='fixed';panel.style.zIndex='6';panel.style.width='280px';panel.style.top='0';panel.style.bottom='90px';panel.style.boxShadow='-20px 0 60px #0009'}});
-$('lyricsToggle').addEventListener('click',()=>{$('rightPanel').style.display='block';$('rightPanel').scrollIntoView({behavior:'smooth'});toast('Lyrics panel opened')});
-$('closePanel').addEventListener('click',()=>{$('rightPanel').style.display='none'});
-document.querySelectorAll('.nav-item').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b===btn));if(btn.dataset.view==='home'){currentPlaylist='all';renderTracks()}else if(btn.dataset.view==='library'){currentPlaylist='all';renderTracks();toast('Your local library')}else{const query=prompt('Search your imported tracks');if(query!==null){const q=query.toLowerCase();document.querySelectorAll('.track-card').forEach(c=>c.style.display=c.textContent.toLowerCase().includes(q)?'':'none');toast('Search results for: '+query)}}}));
-$('backBtn').addEventListener('click',()=>{currentPlaylist='all';renderTracks()});$('forwardBtn').addEventListener('click',()=>toast('You are on the latest page'));
-renderTracks();renderPlaylists();renderQueue();
-</script>
+  <div id="particles-container" class="fixed inset-0 pointer-events-none z-0"></div>
+  <div class="fixed top-12 left-10 w-72 h-72 bg-pink-300/40 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-10 right-10 w-80 h-80 bg-rose-300/45 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-100/30 rounded-full blur-3xl pointer-events-none"></div>
+
+  <main class="w-full max-w-md relative z-10 my-8">
+
+    <div id="login-card" class="glass-happy rounded-3xl p-6 sm:p-9 transition-all duration-500 relative overflow-hidden">
+      
+      <!-- Top Soft Rainbow Sheen -->
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-amber-200/40 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-pink-300/40 rounded-full blur-2xl pointer-events-none"></div>
+
+      <!-- Happy Heart Mascot & Header -->
+      <div class="text-center mb-6 relative">
+        <div class="inline-block relative cursor-pointer" id="mascot-touch-trigger" title="Tap to make the heart giggly!">
+          <!-- Happy Smiling Heart Mascot (SVG with blushing cheeks and expressive eyes) -->
+          <div id="heart-mascot" class="bouncy-mascot transition-transform duration-300">
+            <svg class="w-24 h-24 mx-auto filter drop-shadow-md" viewBox="0 0 100 100" fill="none">
+              <!-- Heart Base -->
+              <path d="M50 88C50 88 12 62 12 34C12 18 25 10 37 10C44 10 48 15 50 18C52 15 56 10 63 10C75 10 88 18 88 34C88 62 50 88 50 88Z" 
+                    fill="url(#heart-gradient)" stroke="#ff2d6d" stroke-width="2.5" stroke-linejoin="round"/>
+              
+              <!-- Subtle light gloss -->
+              <path d="M22 26C22 18 29 14 36 14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+              <!-- Eyes Container -->
+              <g id="mascot-eyes">
+                <circle cx="36" cy="35" r="4.5" fill="#2d0b1a" />
+                <circle cx="64" cy="35" r="4.5" fill="#2d0b1a" />
+                <!-- Eye Sparkles -->
+                <circle cx="34.5" cy="33.5" r="1.6" fill="#ffffff" />
+                <circle cx="62.5" cy="33.5" r="1.6" fill="#ffffff" />
+              </g>
+
+              <!-- Blushing Cheeks -->
+              <ellipse cx="28" cy="42" rx="4.5" ry="3" fill="#ff769d" opacity="0.8" />
+              <ellipse cx="72" cy="42" rx="4.5" ry="3" fill="#ff769d" opacity="0.8" />
+
+              <!-- Smiling Mouth -->
+              <path id="mascot-mouth" d="M42 43C45 49 55 49 58 43" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="#a30f3a"/>
+              
+              <!-- Little Head Bow / Heart Hair Clip -->
+              <g transform="translate(62, 10) scale(0.7)">
+                <path d="M10 10 C5 5, 0 15, 10 20 C20 15, 15 5, 10 10 Z" fill="#ffd166"/>
+                <circle cx="10" cy="12" r="2.5" fill="#f59e0b"/>
+              </g>
+
+              <defs>
+                <linearGradient id="heart-gradient" x1="12" y1="10" x2="88" y2="88" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff7597"/>
+                  <stop offset="0.5" stop-color="#ff477e"/>
+                  <stop offset="1" stop-color="#f42a63"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold text-rose-500 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200 mt-1 shadow-sm">
+            ✨ Happy & Joyful
+          </span>
+        </div>
+
+        <h1 class="text-3xl font-brand font-extrabold tracking-tight text-rose-950 mt-2">
+          Besdong Cheukeat
+        </h1>
+        <p class="text-xs sm:text-sm text-rose-600 font-medium mt-0.5 flex items-center justify-center gap-1.5">
+          <span>បេះដូងរីករាយ</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+          <span>Sweet & Happy Love Portal 💕</span>
+        </p>
+      </div>
+
+      <!-- Quick Fill Credential Hint Banner -->
+      <div class="mb-5 p-3 rounded-2xl sparkle-badge flex items-center justify-between gap-2 shadow-sm">
+        <div class="text-xs text-rose-800 leading-tight">
+          <span class="font-bold text-rose-700 flex items-center gap-1">
+            <span class="text-amber-500">🌟</span> Ready Account:
+          </span>
+          <span class="font-mono text-rose-950 font-medium">Cheukeat</span> &bull; 
+          <span class="font-mono text-rose-950 font-medium">CheukeatslVotey</span>
+        </div>
+        <button id="quick-fill-btn" type="button" class="text-xs px-3 py-1.5 rounded-xl bg-white hover:bg-rose-50 text-rose-600 font-semibold border border-rose-300 shadow-sm transition-all hover:scale-105 active:scale-95">
+          Auto Fill ✨
+        </button>
+      </div>
+
+      <form id="login-form" class="space-y-4">
+        
+        <!-- Username Input Field -->
+        <div>
+          <label for="username" class="block text-xs font-bold text-rose-800 uppercase tracking-wider mb-1.5">
+            Username / ឈ្មោះអ្នកប្រើ
+          </label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-rose-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="username" 
+              required 
+              value="Cheukeat"
+              placeholder="Username" 
+              class="input-field-happy w-full pl-11 pr-4 py-3 rounded-2xl text-sm font-semibold text-rose-950 placeholder-rose-300 outline-none"
+            >
+          </div>
+        </div>
+
+        <!-- Password Input Field with Clear Visibility Toggle -->
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label for="password" class="block text-xs font-bold text-rose-800 uppercase tracking-wider">
+              Password / ពាក្យសម្ងាត់
+            </label>
+            <span id="visibility-label" class="text-[11px] font-semibold text-rose-500 bg-rose-100/70 px-2 py-0.5 rounded-lg">
+              Showing password
+            </span>
+          </div>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-rose-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="password" 
+              required 
+              value="CheukeatslVotey" 
+              placeholder="Enter password" 
+              class="input-field-happy w-full pl-11 pr-12 py-3 rounded-2xl text-sm font-semibold text-rose-950 placeholder-rose-300 outline-none"
+            >
+            <!-- Toggle Show/Hide Button -->
+            <button 
+              type="button" 
+              id="toggle-password" 
+              aria-label="Toggle password visibility"
+              class="absolute inset-y-0 right-0 flex items-center pr-3.5 text-rose-500 hover:text-rose-700 transition-colors p-1"
+              title="Click to hide/show password"
+            >
+              <!-- Eye icon shown as visible initially -->
+              <svg id="eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Feedback Alert Container -->
+        <div id="feedback-box" class="hidden p-3 rounded-2xl text-xs transition-all duration-300 shadow-sm"></div>
+
+        <!-- Happy Submit Button -->
+        <button 
+          type="submit" 
+          id="login-btn"
+          class="w-full btn-happy py-3.5 px-4 rounded-2xl text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 mt-3 cursor-pointer"
+        >
+          <span>ចូលគណនី / Log In with Love</span>
+          <span class="text-base">💖</span>
+        </button>
+      </form>
+
+      <!-- Romantic Footer -->
+      <div class="mt-6 pt-5 border-t border-rose-200/80 text-center text-xs text-rose-500/80 font-medium flex items-center justify-center gap-1.5">
+        <span>Made with endless smiles for</span>
+        <strong class="text-rose-700 font-bold">Cheukeat &amp; Votey</strong>
+        <span>🥰</span>
+      </div>
+    </div>
+
+    <div id="dashboard-card" class="hidden glass-happy rounded-3xl p-6 sm:p-9 transition-all duration-500 text-center relative overflow-hidden">
+      
+      <div class="relative inline-block mb-3">
+        <!-- Big Happy Heart with Crown -->
+        <div class="w-24 h-24 mx-auto rounded-full bg-rose-100 border-2 border-rose-300 flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform">
+          <span class="text-5xl animate-bounce">💖</span>
+        </div>
+        <span class="absolute -top-2 -right-1 text-2xl">👑</span>
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-brand font-extrabold text-rose-950 mb-1">
+        Welcome Cheukeat! 🎉
+      </h2>
+      <p class="text-xs sm:text-sm text-rose-600 font-medium mb-5">
+        "Cheukeat sl Votey — Happiness fills every single heartbeat! 🥰"
+      </p>
+
+      <!-- Love Statistics / Highlights -->
+      <div class="bg-rose-50/90 rounded-2xl p-4 border border-rose-200 text-left mb-5 space-y-2.5 text-xs shadow-inner">
+        <div class="flex justify-between items-center border-b border-rose-200/70 pb-2">
+          <span class="text-rose-700 font-medium">Heart Mood:</span>
+          <span class="text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> 100% Full of Joy
+          </span>
+        </div>
+        <div class="flex justify-between items-center border-b border-rose-200/70 py-1">
+          <span class="text-rose-700 font-medium">Logged In As:</span>
+          <span class="text-rose-950 font-bold font-mono">Cheukeat (ឈឺកៀត)</span>
+        </div>
+        <div class="flex justify-between items-center py-1">
+          <span class="text-rose-700 font-medium">Special Person:</span>
+          <span class="text-rose-600 font-bold">Votey (វត្តី) 💕</span>
+        </div>
+        <div class="flex justify-between items-center pt-1 border-t border-rose-200/70">
+          <span class="text-rose-700 font-medium">Love Taps Given:</span>
+          <span id="love-count-badge" class="text-rose-600 font-extrabold bg-rose-200/70 px-2 py-0.5 rounded-lg text-sm">
+            0 ❤️
+          </span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button id="tap-love-btn" class="flex-1 py-3 px-4 rounded-2xl btn-happy text-white text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-md">
+          <span>Tap Happy Love!</span>
+          <span class="text-sm">🌸</span>
+        </button>
+        <button id="logout-btn" class="flex-1 py-3 px-4 rounded-2xl bg-white hover:bg-rose-100 text-rose-700 text-xs font-bold border border-rose-300 transition-all shadow-sm">
+          Log Out / ចាកចេញ
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Valid predefined credentials requested
+    const VALID_USER = "Cheukeat";
+    const VALID_PASS = "CheukeatslVotey";
+
+    // Selectors
+    const loginCard = document.getElementById('login-card');
+    const dashboardCard = document.getElementById('dashboard-card');
+    const loginForm = document.getElementById('login-form');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const togglePasswordBtn = document.getElementById('toggle-password');
+    const visibilityLabel = document.getElementById('visibility-label');
+    const eyeIcon = document.getElementById('eye-icon');
+    const feedbackBox = document.getElementById('feedback-box');
+    const quickFillBtn = document.getElementById('quick-fill-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const tapLoveBtn = document.getElementById('tap-love-btn');
+    const loveCountBadge = document.getElementById('love-count-badge');
+    const particlesContainer = document.getElementById('particles-container');
+    const mascotMouth = document.getElementById('mascot-mouth');
+    const mascotEyes = document.getElementById('mascot-eyes');
+    const mascotTouchTrigger = document.getElementById('mascot-touch-trigger');
+    const heartMascot = document.getElementById('heart-mascot');
+
+    let loveCount = 0;
+    let isPasswordVisible = true; // Initially shown as requested
+
+    // Happy floating icons
+    const happySymbols = ['💖', '💕', '🥰', '🌸', '✨', '💛', '💗', '🍓', '🎀'];
+
+    function spawnHappyParticle() {
+      const el = document.createElement('div');
+      el.className = 'float-item';
+      el.textContent = happySymbols[Math.floor(Math.random() * happySymbols.length)];
+      el.style.left = (Math.random() * 92 + 2) + 'vw';
+      el.style.fontSize = (Math.random() * 16 + 16) + 'px';
+      const duration = Math.random() * 5 + 6;
+      el.style.animationDuration = duration + 's';
+      particlesContainer.appendChild(el);
+
+      setTimeout(() => {
+        el.remove();
+      }, duration * 1000);
+    }
+
+    // Launch floating hearts periodically
+    setInterval(spawnHappyParticle, 700);
+    for (let i = 0; i < 8; i++) spawnHappyParticle();
+
+    // Mascot animations & facial expressions
+    function setMascotExpression(type) {
+      if (type === 'wink') {
+        mascotEyes.innerHTML = `
+          <circle cx="36" cy="35" r="4.5" fill="#2d0b1a" />
+          <circle cx="34.5" cy="33.5" r="1.6" fill="#ffffff" />
+          <path d="M59 36 Q64 30 69 36" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        `;
+        mascotMouth.setAttribute('d', 'M40 43C45 52 55 52 60 43');
+      } else if (type === 'shy') {
+        mascotEyes.innerHTML = `
+          <path d="M31 36 Q36 30 41 36" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M59 36 Q64 30 69 36" stroke="#2d0b1a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        `;
+        mascotMouth.setAttribute('d', 'M44 45 Q50 48 56 45');
+      } else {
+        // Normal wide happy smile
+        mascotEyes.innerHTML = `
+          <circle cx="36" cy="35" r="4.5" fill="#2d0b1a" />
+          <circle cx="64" cy="35" r="4.5" fill="#2d0b1a" />
+          <circle cx="34.5" cy="33.5" r="1.6" fill="#ffffff" />
+          <circle cx="62.5" cy="33.5" r="1.6" fill="#ffffff" />
+        `;
+        mascotMouth.setAttribute('d', 'M42 43C45 49 55 49 58 43');
+      }
+    }
+
+    // Interactive mascot taps
+    mascotTouchTrigger.addEventListener('click', () => {
+      heartMascot.classList.remove('bouncy-mascot');
+      heartMascot.style.transform = 'scale(1.25) rotate(-6deg)';
+      setMascotExpression('wink');
+
+      if (window.confetti) {
+        confetti({
+          particleCount: 25,
+          spread: 60,
+          origin: { y: 0.35 },
+          colors: ['#ff4d82', '#ff8fa3', '#ffd166']
+        });
+      }
+
+      setTimeout(() => {
+        heartMascot.style.transform = '';
+        heartMascot.classList.add('bouncy-mascot');
+        setMascotExpression('normal');
+      }, 700);
+    });
+
+    // Password visibility toggle logic
+    togglePasswordBtn.addEventListener('click', () => {
+      isPasswordVisible = !isPasswordVisible;
+      if (isPasswordVisible) {
+        passwordInput.type = 'text';
+        visibilityLabel.textContent = 'Showing password';
+        visibilityLabel.className = 'text-[11px] font-semibold text-rose-500 bg-rose-100/70 px-2 py-0.5 rounded-lg';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        `;
+        setMascotExpression('normal');
+      } else {
+        passwordInput.type = 'password';
+        visibilityLabel.textContent = 'Password hidden';
+        visibilityLabel.className = 'text-[11px] font-semibold text-zinc-500 bg-zinc-100 px-2 py-0.5 rounded-lg';
+        eyeIcon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
+        `;
+        setMascotExpression('shy');
+      }
+    });
+
+    // Auto Fill credentials button
+    quickFillBtn.addEventListener('click', () => {
+      usernameInput.value = VALID_USER;
+      passwordInput.value = VALID_PASS;
+      showFeedback('Credentials loaded with love! Cheukeat / CheukeatslVotey', 'info');
+      setMascotExpression('wink');
+      setTimeout(() => setMascotExpression('normal'), 1200);
+    });
+
+    // Feedback message display
+    function showFeedback(message, type = 'error') {
+      feedbackBox.classList.remove('hidden');
+      if (type === 'error') {
+        feedbackBox.className = 'p-3 rounded-2xl text-xs bg-rose-100 text-rose-800 border border-rose-300 flex items-center gap-2 font-medium';
+        feedbackBox.innerHTML = `
+          <span class="text-base">🥺</span>
+          <span>${message}</span>
+        `;
+        setMascotExpression('shy');
+      } else if (type === 'success') {
+        feedbackBox.className = 'p-3 rounded-2xl text-xs bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-2 font-medium';
+        feedbackBox.innerHTML = `
+          <span class="text-base">🎉</span>
+          <span>${message}</span>
+        `;
+      } else {
+        feedbackBox.className = 'p-3 rounded-2xl text-xs bg-pink-100 text-pink-900 border border-pink-200 flex items-center gap-2 font-medium';
+        feedbackBox.innerHTML = `<span class="text-base">💖</span><span>${message}</span>`;
+      }
+    }
+
+    // Submit handler
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const enteredUser = usernameInput.value.trim();
+      const enteredPass = passwordInput.value.trim();
+
+      if (enteredUser === VALID_USER && enteredPass === VALID_PASS) {
+        showFeedback("Yay! Welcome Cheukeat & Votey! 💖", "success");
+        setMascotExpression('wink');
+
+        // Confetti burst
+        if (window.confetti) {
+          confetti({
+            particleCount: 80,
+            spread: 90,
+            origin: { y: 0.6 },
+            colors: ['#ff4d82', '#ff7597', '#ffd166', '#a7f3d0']
+          });
+        }
+
+        setTimeout(() => {
+          loginCard.classList.add('hidden');
+          dashboardCard.classList.remove('hidden');
+        }, 650);
+      } else {
+        showFeedback("Oops! Please check your credentials: Username is 'Cheukeat' & Password is 'CheukeatslVotey' 💕", "error");
+      }
+    });
+
+    // Dashboard Logout
+    logoutBtn.addEventListener('click', () => {
+      dashboardCard.classList.add('hidden');
+      loginCard.classList.remove('hidden');
+      feedbackBox.classList.add('hidden');
+      setMascotExpression('normal');
+    });
+
+    // Dashboard Happy Love Button
+    tapLoveBtn.addEventListener('click', () => {
+      loveCount++;
+      loveCountBadge.textContent = `${loveCount} ❤️`;
+      
+      // Multi-directional small confetti bursts
+      if (window.confetti) {
+        confetti({
+          particleCount: 30,
+          spread: 50,
+          origin: { y: 0.7 },
+          colors: ['#ff4d82', '#f43f5e', '#ffd166', '#ff85a1']
+        });
+      }
+
+      for (let i = 0; i < 4; i++) {
+        spawnHappyParticle();
+      }
+    });
+  </script>
 </body>
 </html>
